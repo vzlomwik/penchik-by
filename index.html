@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penchik.BY — Силиконовые рыболовные приманки | Официальный каталог</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@400;600;700;800;900&display=swap');
+
+        :root {
+            --primary: #00e676;
+            --primary-dark: #00b050;
+            --bg-dark: #060e17;
+            --card-bg: #0f1c2a;
+            --telegram: #0088cc;
+            --text-light: #eceff1;
+            --text-muted: #90a4ae;
+            --border: rgba(0, 230, 118, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(6, 14, 23, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 12px 24px;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo-img {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+            box-shadow: 0 0 12px rgba(0, 230, 118, 0.4);
+        }
+
+        .brand-title {
+            font-family: 'Caveat', cursive;
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .brand-title span {
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-add {
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-add:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 230, 118, 0.4);
+        }
+
+        .btn-tg {
+            background: var(--telegram);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4);
+        }
+
+        .btn-tg:hover {
+            background: #0099e6;
+            transform: translateY(-1px);
+        }
+
+        /* HERO BANNER */
+        .hero {
+            background: radial-gradient(circle at 50% 20%, rgba(0, 230, 118, 0.15) 0%, transparent 60%),
+                        linear-gradient(180deg, rgba(6, 14, 23, 0.8) 0%, var(--bg-dark) 100%);
+            padding: 50px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 230, 118, 0.12);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 24px auto;
+            font-size: 16px;
+        }
+
+        /* CONTROL BAR / FILTER */
+        .controls-container {
+            max-width: 1280px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .gallery-counter {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .gallery-counter b {
+            color: var(--primary);
+        }
+
+        /* PRODUCT GRID */
+        .main-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 10px 20px 80px 20px;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        /* CARD */
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0, 230, 118, 0.2);
+            border-color: var(--primary);
+        }
+
+        .card-img-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 4.5;
+            background: #02070e;
+            overflow: hidden;
+        }
+
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .card-img-wrap img {
+            transform: scale(1.04);
+        }
+
+        .card-pill {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(6, 14, 23, 0.85);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-delete-card {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(220, 38, 38, 0.85);
+            color: #fff;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            backdrop-filter: blur(5px);
+            transition: background 0.2s ease;
+        }
+
+        .btn-delete-card:hover {
+            background: #b91c1c;
+        }
+
+        .card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #b0bec5;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .btn-order-card {
+            background: linear-gradient(135deg, var(--telegram), #006699);
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-order-card:hover {
+            opacity: 0.9;
+        }
+
+        /* MODAL FOR ADDING PHOTO */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: #101c29;
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .btn-close-modal {
+            background: transparent;
+            border: none;
+            color: #90a4ae;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #b0bec5;
+            text-transform: uppercase;
+        }
+
+        .form-group input, .form-group textarea {
+            background: #09131e;
+            border: 1px solid #1e354a;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .file-drop-area {
+            border: 2px dashed #1e354a;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+            position: relative;
+        }
+
+        .file-drop-area:hover {
+            border-color: var(--primary);
+        }
+
+        .preview-img {
+            max-height: 140px;
+            margin-top: 10px;
+            border-radius: 8px;
+            display: none;
+            object-fit: cover;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: #000;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 230, 118, 0.4);
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #040910;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 30px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        footer b {
+            color: var(--primary);
+        }
+
+        @media (max-width: 650px) {
+            .hero h1 { font-size: 30px; }
+            .header-actions .btn span { display: none; }
+            .brand-title { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ВЕРХНЕЕ МЕНЮ -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand-link">
+                <img class="brand-logo-img" src="https://unlimbot.hb.ru-msk.vkcloud-storage.ru/uploads/384b7797c9e34eb3931d86cf313bf8121f3117b3e0b7081c.jpg" alt="Penchik.BY Логотип Щука">
+                <div class="brand-title">Penchik<span>.BY</span></div>
+            </a>
+            <div class="header-actions">
+                <button class="btn btn-add" onclick="openModal()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    <span>Добавить фото</span>
+                </button>
+                <a href="https://t.me/penchikby" target="_blank" class="btn btn-tg">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                    <span>Наш Telegram</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- БАННЕР / ШАПКА -->
+    <section class="hero">
+        <div class="hero-badge">Силиконовые приманки ручной работы</div>
+        <h1>Каталог приманок <span>Penchik.BY</span></h1>
+        <p>Уловистый съедобный силикон на щуку, судака и окуня. Выбирайте понравившиеся модели и заказывайте напрямую в Telegram с доставкой по РБ и СНГ!</p>
+        <a href="https://t.me/penchikby" target="_blank" class="btn btn-tg" style="padding: 12px 28px; font-size: 15px;">
+            Перейти в Telegram-канал @penchikby
+        </a>
+    </section>
+
+    <!-- ПАНЕЛЬ УПРАВЛЕНИЯ -->
+    <div class="controls-container">
+        <div class="gallery-counter">В каталоге: <b id="items-count">3</b> модели</div>
+        <button class="btn btn-add" onclick="openModal()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            Загрузить новое фото приманки
+        </button>
+    </div>
+
+    <!-- КАТАЛОГ С ФОТОГРАФИЯМИ -->
+    <main class="main-content">
+        <div class="products-grid" id="gallery-grid">
+            <!-- Карточки загружаются динамически через JS -->
+        </div>
+    </main>
+
+    <!-- МОДАЛЬНОЕ ОКНО ДОБАВЛЕНИЯ ФОТО -->
+    <div class="modal-overlay" id="add-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title">Добавить приманку в каталог</div>
+                <button class="btn-close-modal" onclick="closeModal()">&times;</button>
+            </div>
+
+            <div class="form-group">
+                <label>Выберите фотографию (с телефона или ПК)</label>
+                <div class="file-drop-area" onclick="document.getElementById('file-input').click()">
+                    <div id="drop-text">📁 Нажмите, чтобы выбрать файл с фото</div>
+                    <img id="preview-img" class="preview-img" alt="Предпросмотр">
+                    <input type="file" id="file-input" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Название приманки / расцветки</label>
+                <input type="text" id="item-title" placeholder="Например: Виброхвост 100мм Ультрафиолет">
+            </div>
+
+            <div class="form-group">
+                <label>Категория / Бейдж</label>
+                <input type="text" id="item-badge" placeholder="Например: Виброхвост / Новинка">
+            </div>
+
+            <div class="form-group">
+                <label>Характеристики через запятую</label>
+                <input type="text" id="item-tags" placeholder="Щука, Судак, 90мм, С блестками">
+            </div>
+
+            <div class="form-group">
+                <label>Краткое описание</label>
+                <textarea id="item-desc" rows="2" placeholder="Съедобный силикон, мягкая активная пятка..."></textarea>
+            </div>
+
+            <button class="btn-submit" onclick="saveNewItem()">Добавить в каталог</button>
+        </div>
+    </div>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <p>© 2026 <b>Penchik.BY</b> — Силиконовые рыболовные приманки. Все права защищены.</p>
+        <p style="margin-top: 6px;">Заказы и консультации в Telegram: <a href="https://t.me/penchikby" style="color:var(--primary); text-decoration:none;">@penchikby</a></p>
+    </footer>
+
+    <script>
+        // Начальные данные с вашими загруженными приманками
+        const defaultItems = [
+            {
+                id: '1',
+                title: 'Набор приманок «Убойный Микс»',
+                badge: 'Набор / Микс',
+                image: 'https://unlimbot.hb.ru-msk.vkcloud-storage.ru/uploads/4335e4e595d84141bf3d6ae51e294811eb7717b1808fe147.jpg',
+                desc: 'Комплект уловистых расцветок на щуку, судака и крупного окуня в удобной пачке.',
+                tags: ['Щука', 'Судак', 'Окунь', 'Разноцветные']
+            },
+            {
+                id: '2',
+                title: 'Виброхвосты «Neon Chartreuse»',
+                badge: 'Кислота / Неон',
+                image: 'https://unlimbot.hb.ru-msk.vkcloud-storage.ru/uploads/5a9290b532444956bc4bf7313f6a9fd085e5c7fcc2560218.jpg',
+                desc: 'Яркий кислотно-салатовый цвет с высокой видимостью на глубине и в мутной воде.',
+                tags: ['Кислотный', 'Мутная вода', 'Активная игра']
+            },
+            {
+                id: '3',
+                title: 'Виброхвосты «Motor Oil Glitters»',
+                badge: 'Машинное масло',
+                image: 'https://unlimbot.hb.ru-msk.vkcloud-storage.ru/uploads/9ffd7a5d212a4e329d513a0ac93020ab372be95447e00aaf.jpg',
+                desc: 'Натуральный цвет с разноцветной сверкающей блёсткой. Безотказно провоцирует пассивного хищника.',
+                tags: ['Блестки', 'Натурал', 'Пассивный судак']
+            }
+        ];
+
+        // Загрузка сохраненных данных из LocalStorage браузера
+        function getStoredItems() {
+            const data = localStorage.getItem('penchik_catalog_items');
+            return data ? JSON.parse(data) : defaultItems;
+        }
+
+        function saveItemsToStorage(items) {
+            localStorage.setItem('penchik_catalog_items', JSON.stringify(items));
+        }
+
+        let currentImageBase64 = '';
+
+        function renderGallery() {
+            const items = getStoredItems();
+            const grid = document.getElementById('gallery-grid');
+            document.getElementById('items-count').innerText = items.length;
+
+            grid.innerHTML = items.map(item => `
+                <div class="product-card" id="card-${item.id}">
+                    <div class="card-img-wrap">
+                        <span class="card-pill">${item.badge || 'Приманка'}</span>
+                        <button class="btn-delete-card" title="Удалить карточку" onclick="deleteItem('${item.id}')">&times;</button>
+                        <img src="${item.image}" alt="${item.title}">
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="card-title">${item.title}</div>
+                            <div class="card-desc">${item.desc || 'Качественный съедобный силикон Penchik.BY'}</div>
+                        </div>
+                        <div class="card-tags">
+                            ${(item.tags || []).map(t => `<span class="tag"># ${t.trim()}</span>`).join('')}
+                        </div>
+                        <a href="https://t.me/penchikby" target="_blank" class="btn-order-card">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                            Заказать в Telegram
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openModal() {
+            document.getElementById('add-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('add-modal').classList.remove('active');
+            currentImageBase64 = '';
+            document.getElementById('preview-img').style.display = 'none';
+            document.getElementById('drop-text').style.display = 'block';
+            document.getElementById('item-title').value = '';
+            document.getElementById('item-badge').value = '';
+            document.getElementById('item-tags').value = '';
+            document.getElementById('item-desc').value = '';
+        }
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                currentImageBase64 = e.target.result;
+                const preview = document.getElementById('preview-img');
+                preview.src = currentImageBase64;
+                preview.style.display = 'inline-block';
+                document.getElementById('drop-text').style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function saveNewItem() {
+            if (!currentImageBase64) {
+                alert('Пожалуйста, выберите фотографию!');
+                return;
+            }
+
+            const title = document.getElementById('item-title').value.trim() || 'Новая приманка Penchik.BY';
+            const badge = document.getElementById('item-badge').value.trim() || 'Силикон';
+            const desc = document.getElementById('item-desc').value.trim() || 'Съедобный силикон от Penchik.BY';
+            const rawTags = document.getElementById('item-tags').value.trim();
+            const tags = rawTags ? rawTags.split(',').map(t => t.trim()) : ['Penchik', 'Приманка'];
+
+            const newItem = {
+                id: Date.now().toString(),
+                title: title,
+                badge: badge,
+                image: currentImageBase64,
+                desc: desc,
+                tags: tags
+            };
+
+            const items = getStoredItems();
+            items.unshift(newItem); // добавляем в начало списка
+            saveItemsToStorage(items);
+            renderGallery();
+            closeModal();
+        }
+
+        function deleteItem(id) {
+            if (!confirm('Вы уверены, что хотите удалить эту приманку из каталога?')) return;
+            let items = getStoredItems();
+            items = items.filter(item => item.id !== id);
+            saveItemsToStorage(items);
+            renderGallery();
+        }
+
+        // Первоначальный рендер
+        renderGallery();
+    </script>
+</body>
+</html>
